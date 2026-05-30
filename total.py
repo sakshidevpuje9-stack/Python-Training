@@ -9,7 +9,7 @@ percentage=(total/5);
 print("your total  marks is: ",total);
 print("The percentage is: ",percentage);
 
-if percentage >= 75:
+if percentage >= 95:
     print("You have scored distinction");
 elif percentage >= 60:
     print("You have scored first class");
