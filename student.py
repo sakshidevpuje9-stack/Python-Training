@@ -1,42 +1,60 @@
 
-class Student:
-    def __init__(self, student_id, name):
-        self.student_id = student_id
-        self.name = name
-        self.fees_paid = 0
-        self.attendance = []
-        self.receipts = []
+students = {} 
 
-    def pay_fee(self, amount):
-        self.fees_paid += amount
+while True: 
+    print("\n1.Add Student")
+    print("2.Mark Attendance") 
+    print("3.Pay Fees")
+    print("4.Show Receipt")
+    print("5.Exit")
     
+    choice = input("Enter choice: ")
 
-        receipt = {
-            "receipt_no": len(self.receipts) + 1,
-            "amount": amount
+    # Add Student
+    if choice == "1":
+        roll = input("Enter Roll No: ")
+        name = input("Enter Name: ")
+        
+        students[roll] = {
+            "name": name,
+            "attendance": 0,
+            "fees": 0
         }
+        print("Student Added")
 
-        self.receipts.append(receipt)
+    # Attendance 
+    elif choice == "2":
+        roll = input("Enter Roll No: ")
+        if roll in students:
+            students[roll]["attendance"] += 1
+            print("Attendance Marked")
+        else:
+            print("Student not found")
 
-    def mark_attendance(self, status):
-        self.attendance.append(status)
+    # Fees
+    elif choice == "3":
+        roll = input("Enter Roll No: ")
+        amount = int(input("Enter Fees Amount: "))
+        if roll in students:
+            students[roll]["fees"] += amount
+            print("Fees Paid")
+        else:
+            print("Student not found")
+            
+    # Show Receipt - Ye tumhe likhna hai
+    elif choice == "4":
+        roll = input("Enter Roll No: ")
+        if roll in students:
+            print(f"Name: {students[roll]['name']}")
+            print(f"Attendance: {students[roll]['attendance']}")
+            print(f"Fees Paid: {students[roll]['fees']}")
+        else:
+            print("Student not found")
 
-    def get_student_report(self):
-        total_classes = len(self.attendance)
-        present = self.attendance.count("P")
-
-        attendance_percent = (
-            (present / total_classes) * 100
-            if total_classes > 0 else 0
-        )
-
-        return {
-            "Student ID": self.student_id,
-            "Name": self.name,
-            "Total Fees Paid": self.fees_paid,
-            "Attendance %": round(attendance_percent, 2),
-            "Receipts": self.receipts
-        }
-
-
-
+    # Exit
+    elif choice == "5":
+        print("Exiting...")
+        break
+        
+    else:
+        print("Invalid choice")
