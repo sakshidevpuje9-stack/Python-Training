@@ -10,3 +10,5 @@ print(f"Hello {name} ! Your marks are {marks} and you are from {city}")
 #virtual environment
 #1. create a virtual environment
 #1. python -m venv myenv
+
+set -ExecutionPolicy  -Executionpolicy RemoteSigned -Scope CurrentUser
