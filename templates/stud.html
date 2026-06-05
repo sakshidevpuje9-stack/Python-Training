@@ -1,0 +1,31 @@
+
+{% extends "base.html" %}
+{% block title %}Students - Coaching class{% endblock %}
+
+
+{% block content %}
+<h1>Students</h1>
+<p>Total Total Students: {{ students|length }}</p>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Student Name</th>
+        <th>Rollno</th>
+        <th>Grade</th>
+        <th>Total Marks</th>
+        <th>Marks</th>
+    </tr>
+    {% for student in students %}
+    <tr>
+        <td>{{ student.name }}</td>
+        <td>{{ student.rollno }}</td>
+        <td>{{ student.grade }}</td>
+        <td>{{ student.total_marks }}</td>
+        <td>{{ student.marks }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p><a href="{{ url_for('Home') }}">Back to Home</a></p>
+{% endblock %}
+

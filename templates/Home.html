@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<h1>Welcome to the Coaching Class Management System</h1>
+
+<p>This system helps you manage your coaching class efficiently. You can track student attendance, manage fee payments, and monitor student performance all in one place.</p>
+
+<h2>Quick Status</h2>
+<ul>
+    {% for student in students %}
+        <li>{{ student.name }} - Score: {{ student.score }}
+
+            {% if student.marks >= 90 %}
+                <strong>Excellent</strong>
+            {% elif student.marks >= 75 %}
+                <strong>Good</strong>
+            {% elif student.marks >= 60 %}
+                <strong>Average</strong>
+            {% else %}
+                <strong>Needs Improvement</strong>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
