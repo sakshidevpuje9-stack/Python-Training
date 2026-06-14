@@ -1,106 +1,38 @@
-
-
-{% extends 'my_project/Class.html' %}
+{% extends "base.html" %}
 
 {% block content %}
+<div class="dashboard">
+    <!-- Welcome Card -->
+    <div class="welcome-card">
+        <h2>🎓 Welcome to Coaching Class Manager</h2>
+        <p>Manage Students, Attendance and Fees with a Professional Dashboard.</p>
+    </div>
 
-<style>
-    body{
-        background: linear-gradient(to right, #74ebd5, #ACB6E5);
-    }
+    <!-- Stats Cards -->
+    <div class="card-container">
+        <!-- Students Card -->
+        <div class="stat-card students">
+            <div class="icon">👨‍🎓</div>
+            <h3>Students</h3>
+            <div class="stat-badge">120 Students</div>
+            <p>Manage student details easily.</p>
+        </div>
 
-    .title{
-        text-align:center;
-        color:#023e8a;
-        font-weight:bold;
-        margin-bottom:30px;
-    }
+        <!-- Attendance Card -->
+        <div class="stat-card attendance">
+            <div class="icon">📅</div>
+            <h3>Attendance</h3>
+            <div class="stat-badge">95%</div>
+            <p>Track attendance records.</p>
+        </div>
 
-    .card{
-        border:none;
-        border-radius:20px;
-        transition:0.4s;
-        color:white;
-    }
-
-    .card:hover{
-        transform:translateY(-10px);
-    }
-
-    .student-card{
-        background:linear-gradient(135deg,#667eea,#764ba2);
-    }
-
-    .attendance-card{
-        background:linear-gradient(135deg,#11998e,#38ef7d);
-    }
-
-    .fees-card{
-        background:linear-gradient(135deg,#f7971e,#ffd200);
-        color:black;
-    }
-
-    .icon{
-        font-size:50px;
-        text-align:center;
-        margin-bottom:10px;
-    }
-
-    .badge{
-        font-size:14px;
-        padding:8px 12px;
-    }
-
-    .welcome-box{
-        background:white;
-        padding:25px;
-        border-radius:15px;
-        box-shadow:0 5px 15px rgba(0,0,0,0.2);
-        margin-bottom:30px;
-        text-align:center;
-    }
-</style>
-
-<div class="welcome-box">
-    <h2 class="title">🎓 Welcome to Coaching Class Manager</h2>
-    <p>Manage Students, Attendance and Fees with a Professional Dashboard.</p>
+        <!-- Fees Card -->
+        <div class="stat-card fees">
+            <div class="icon">💰</div>
+            <h3>Fees</h3>
+            <div class="stat-badge pending">Pending</div>
+            <p>Manage fee payments.</p>
+        </div>
+    </div>
 </div>
-
-<div class="row">
-
-    <div class="col-md-4">
-        <div class="card student-card shadow-lg">
-            <div class="card-body text-center">
-                <div class="icon">👨‍🎓</div>
-                <h4>Students</h4>
-                <span class="badge bg-light text-dark">120 Students</span>
-                <p class="mt-3">Manage student details easily.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="card attendance-card shadow-lg">
-            <div class="card-body text-center">
-                <div class="icon">📅</div>
-                <h4>Attendance</h4>
-                <span class="badge bg-light text-dark">95%</span>
-                <p class="mt-3">Track attendance records.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="card fees-card shadow-lg">
-            <div class="card-body text-center">
-                <div class="icon">💰</div>
-                <h4>Fees</h4>
-                <span class="badge bg-danger">Pending</span>
-                <p class="mt-3">Manage fee payments.</p>
-            </div>
-        </div>
-    </div>
-
-</div>
-
 {% endblock %}

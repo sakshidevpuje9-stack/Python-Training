@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right,#36d1dc,#5b86e5);
+        }
+
+        .container{
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h2{
+            text-align: center;
+            color: #333;
+        }
+
+        input{
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button{
+            width: 100%;
+            padding: 10px;
+            background: #5b86e5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: #3c6dd8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add Student</h2>
+
+    <form method="POST" action="/insert">
+
+        <input type="number" name="Rollno"
+               placeholder="Enter Student Rollno" required>
+        
+        <input type="text" name="Name"
+               placeholder="Enter Student Name" required>
+
+        <input type="number" name="Marks"
+               placeholder="Enter Marks" required>
+
+        <input type="text" name="Performance"
+               placeholder="Excellent / Good / Average" required>
+
+        <input type="text" name="Progress"
+               placeholder="Enter Student Progress" required>
+
+        <button type="submit">Add Student</button>
+
+    </form>
+</div>
+
+</body>
+</html>

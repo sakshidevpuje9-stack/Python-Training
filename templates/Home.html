@@ -1,28 +1,62 @@
+
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Welcome{% endblock %}
 
 {% block content %}
 
-<h1>Welcome to the Coaching Class Management System</h1>
+<style>
+.welcome-box{
+    text-align:center;
+    padding:50px;
+    background:linear-gradient(to right,#4facfe,#00f2fe);
+    border-radius:15px;
+    color:white;
+    margin:30px auto;
+}
 
-<p>This system helps you manage your coaching class efficiently. You can track student attendance, manage fee payments, and monitor student performance all in one place.</p>
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    margin:10px;
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    border-radius:8px;
+    font-weight:bold;
+}
 
-<h2>Quick Status</h2>
-<ul>
-    {% for student in students %}
-        <li>{{ student.name }} - Score: {{ student.score }}
+.students-btn{
+    background:#28a745;
+}
 
-            {% if student.marks >= 90 %}
-                <strong>Excellent</strong>
-            {% elif student.marks >= 75 %}
-                <strong>Good</strong>
-            {% elif student.marks >= 60 %}
-                <strong>Average</strong>
-            {% else %}
-                <strong>Needs Improvement</strong>
-            {% endif %}
-        </li>
-    {% endfor %}
-</ul>
+.about-btn{
+    background:#ff9800;
+}
+
+.btn:hover{
+    opacity:0.8;
+}
+</style>
+
+<div class="welcome-box">
+    <h1>🎓 Welcome to Coaching Class Management System</h1>
+
+    <p>
+        Manage student records, attendance, fees and performance
+        efficiently using this system.
+    </p>
+
+    <br>
+
+    <a href="{{ url_for('add_student') }}" class="btn add_student-btn">
+        Students
+    </a>
+
+    <a href="{{ url_for('home') }}" class="btn home-btn">
+        About
+    </a>
+
+</div>
+
 {% endblock %}
