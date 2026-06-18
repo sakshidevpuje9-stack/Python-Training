@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+    <h1 id="myHeading">Hello Sakshi</h1>
+    <!--javascript code to change the heading text after 2 seconds-->
+    <!js will take this id and change the text to "Welcome to Javascripts!">
+    <button id="mybutton">Click Me</button>
+
+    <script>
+        const heading = document.getElementbyid('myHeading')
+
+        const button=document.getElementByid('mybutton');
+        button.addEventListener('click',function() {
+        heading.textContent="Welcome to javascript!";
+        });
+    </script>
+    </body>
+</html>

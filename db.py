@@ -1,26 +1,21 @@
+
 import sqlite3
 
-def get_db():
-    conn = sqlite3.connect("student.db")
-    return conn
+conn = sqlite3.connect("student.db")
+cur = conn.cursor()
 
-def create_table():
-    conn = get_db()
-    cur = conn.cursor()
+cur.execute("""
+CREATE TABLE IF NOT EXISTS students (
+    Rollno INTEGER PRIMARY KEY,
+    Name TEXT NOT NULL,
+    Subject TEXT NOT NULL,
+    Marks INTEGER NOT NULL,
+    Grade TEXT,
+    Action TEXT
+)
+""")
 
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS stud(
-        Rollno INTEGER PRIMARY KEY,
-        Name TEXT NOT NULL,
-        Marks INTEGER,
-        Performance TEXT,
-        Progress TEXT
-    )
-    """)
+conn.commit()
+conn.close()
 
-    conn.commit()
-    conn.close()
-
-if __name__ == "__main__":
-    create_table()
-    print("Database and Table Created Successfully")
+print("Students table created successfully!")

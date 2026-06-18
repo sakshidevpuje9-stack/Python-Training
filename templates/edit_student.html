@@ -1,0 +1,81 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Edit Student{% endblock %}
+
+{% block content %}
+
+<style>
+.form-container{
+    width:450px;
+    margin:30px auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#27ae60;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#219150;
+}
+</style>
+
+<div class="form-container">
+    <h2>Edit Student</h2>
+
+    <form method="POST">
+
+        <input type="number"
+               name="Rollno"
+               value="{{ student['Rollno'] }}"
+               readonly>
+
+        <input type="text"
+               name="Name"
+               value="{{ student['Name'] }}"
+               required>
+
+        <input type="text"
+               name="Subject"
+               value="{{ student['Subject'] }}"
+               required>
+
+        <input type="number"
+               name="Marks"
+               value="{{ student['Marks'] }}"
+               required>
+
+        <input type="text"
+               name="Grade"
+               value="{{ student['Grade'] }}"
+               required>
+
+        <button type="submit">Update Student</button>
+
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Filter Students{% endblock %}
+
+{% block content %}
+
+<h2 align="center">📊 Filter Students</h2>
+
+<form method="POST" align="center">
+    <input type="number" name="marks" placeholder="Enter Minimum Marks" required>
+    <button type="submit">Filter</button>
+</form>
+
+<br>
+
+{% if students %}
+<table border="1" cellpadding="10" align="center">
+    <tr>
+        <th>Roll No</th>
+        <th>Name</th>
+        <th>subject</th>
+        <th>Marks</th>
+        <th>Grade</th>
+        
+        
+    </tr>
+
+    {% for student in students %}
+    <tr>
+        <td>{{ student['Rollno'] }}</td>
+        <td>{{ student['Name'] }}</td>
+        <td>{{ student['subject'] }}</td>
+        <td>{{ student['Marks'] }}</td>
+        <td>{{ student['Grade'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,131 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}Students{% endblock %}
+
+{% block content %}
+
+<style>
+h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#2c3e50;
+}
+
+table{
+    width:90%;
+    margin:auto;
+    border-collapse:collapse;
+    background:white;
+}
+
+th, td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:center;
+}
+
+th{
+    background:#2c3e50;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f2f2f2;
+}
+
+.edit-btn{
+    background:#27ae60;
+    color:white;
+    padding:6px 12px;
+    text-decoration:none;
+    border-radius:4px;
+}
+
+.delete-btn{
+    background:#e74c3c;
+    color:white;
+    padding:6px 12px;
+    text-decoration:none;
+    border-radius:4px;
+}
+</style>
+
+<h2>Student Records</h2>
+<div class="d-flex justify-content-between align-items-center mb-5">
+    
+    <span class="badge fs-6 px-5 py-2"
+          style="background-color: #1e3a5f;">
+        
+    </span>
+</div>
+
+<!-- Live Search -->
+<div>
+<input type="text"
+       id="searchInput"
+       class="form-control mb-4"
+       placeholder="🔍 Type to search students..."
+       style="width:800px; height:30px; font-size:15px; text-align:left; margin:auto; display:block;">
+</div>
+
+
+
+
+<table>
+    <tr>
+        <th>Roll No</th>
+        <th>Name</th>
+        <th>Subject</th>
+        <th>Marks</th>
+        <th>Grade</th>
+        <th>Action</th>
+    </tr>
+
+    {% for student in students %}
+    <tr>
+        <td>{{ student['Rollno'] }}</td>
+        <td>{{ student['Name'] }}</td>
+        <td>{{ student['Subject'] }}</td>
+        <td>{{ student['Marks'] }}</td>
+        <td>{{ student['Grade'] }}</td>
+
+        <td>
+            <a href="{{ url_for('edit_student', Rollno=student['Rollno']) }}" class="edit-btn">
+                Edit
+            </a>
+
+            <a href="{{ url_for('delete_student', Rollno=student['Rollno']) }}" class="delete-btn">
+                Delete
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+
+<script>
+const searchInput = document.getElementById('searchInput');
+const allRows = document.querySelectorAll('#tableBody tr');
+const resultInfo = document.getElementById('resultInfo');
+
+searchInput.addEventListener('keyup', function() {
+    const query = this.value.toLowerCase();
+    let matchCount = 0;
+    allRows.forEach(function(row) {
+        const name = row.dataset.name || '';
+
+        if(name.includes(query)){
+            row.style.display = '';
+            matchCount++;
+        } else {
+            row.style.display = 'none';
+        }
+    });
+});
+
+</script>
+    
+
+</table>
+
+{% endblock %}

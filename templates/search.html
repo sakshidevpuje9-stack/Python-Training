@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Student{% endblock %}
+
+{% block content %}
+
+<h2 style="text-align:center;">🔍 Search Student</h2>
+
+<form method="POST" style="text-align:center; margin:40px;">
+    <input type="text" name="search" placeholder="Enter Roll No or Name or Grade or subject" required>
+    <button type="submit">Search</button>
+</form>
+
+{% if students %}
+<table border="1" cellpadding="10" style="margin:auto;">
+    <tr>
+        <th>Roll No</th>
+        <th>Name</th>
+        <th>Marks</th>
+        <th>Grade</th>
+        <th>Action</th>
+    </tr>
+
+    {% for student in students %}
+    <tr>
+        <td>{{ student['Rollno'] }}</td>
+        <td>{{ student['Name'] }}</td>
+        <td>{{ student['Marks'] }}</td>
+        <td>{{ student['Grade'] }}</td>
+        <td>
+            <a href="/delete/{{ student['Rollno'] }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% elif searched %}
+<p style="text-align:center;color:red;">
+    No Record Found!
+</p>
+{% endif %}
+
+{% endblock %}
