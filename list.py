@@ -57,6 +57,9 @@ def stud():
 
     return render_template('stud.html', stud=data)
 
+Password:
+        <input type="password" name="password" required><br><br>
+
 
     
 
