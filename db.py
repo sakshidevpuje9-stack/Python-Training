@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS students (
 conn.commit()
 conn.close()
 
-conn = sqlite3.connect('student.db')
+conn = sqlite3.connect('myproject.db')
 cur = conn.cursor()
 
 cur.execute('''
@@ -29,7 +29,13 @@ CREATE TABLE IF NOT EXISTS users (
 )
 ''')
 
+try:
+     cur.execute("Alter table users ADD column role text default 'student' ")
+except Exception:
+     pass
+
 conn.commit()
 conn.close()
 
 print("Students table created successfully!")
+
