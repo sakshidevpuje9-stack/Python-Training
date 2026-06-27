@@ -24,10 +24,18 @@
 
     {% for student in students %}
     <tr>
-        <td>{{ student['Rollno'] }}</td>
-        <td>{{ student['Name'] }}</td>
-        <td>{{ student['Marks'] }}</td>
-        <td>{{ student['Grade'] }}</td>
+  
+
+<tr>
+    
+<td>{{ student['Rollno'] }}</td>
+<td>{{ student['Name'] }}</td>
+<td>{{ student['Subject'] }}</td>
+<td>{{ student['Marks'] }}</td>
+<td>{{ student['Grade'] }}</td>
+    
+</tr>
+      <tr>
         <td>
             <a href="/delete/{{ student['Rollno'] }}">Delete</a>
         </td>
