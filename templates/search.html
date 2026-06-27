@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% block title %}Search Student{% endblock %}
@@ -6,13 +7,13 @@
 
 <h2 style="text-align:center;">🔍 Search Student</h2>
 
-<form method="POST" style="text-align:center; margin:40px;">
-    <input type="text" name="search" placeholder="Enter Roll No or Name or Grade or subject" required>
+<form method="POST" style="text-align:center; margin:20px;">
+    <input type="text" name="search" placeholder="Enter Roll No or Name" required>
     <button type="submit">Search</button>
 </form>
 
 {% if students %}
-<table border="1" cellpadding="100" style="margin:auto;">
+<table border="1" cellpadding="10" style="margin:auto;">
     <tr>
         <th>Roll No</th>
         <th>Name</th>
