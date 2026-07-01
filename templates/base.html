@@ -14,12 +14,12 @@
         }
 
         body{
-            background:linear-gradient(to right,#c5d8d9,#c5ccda);
+            background:linear-gradient(to right,#c9cfd0,#dadde3);
             min-height:100vh;
         }
 
         nav{
-            background:linear-gradient(to right,#ff512f,#e70550e0);
+            background:linear-gradient(to right,#090205e0);
             padding:15px;
             box-shadow:0 2px 10px rgba(0,0,0,0.3);
         }
@@ -73,6 +73,7 @@
             <li><a href="{{ url_for('search') }}">🔍Search</a><li>
             <li><a href="{{ url_for('filter_students') }}">📊Filter</a></li>
             <li><a href="{{ url_for('register') }}">Register</a><li>
+            <li><a href="{{ url_for('subjects') }}">Subjects</a><li>
             {% if session.username %}
                     <span class="nav-link px-2 py-1 text-white">👤 {{ session.username }}</span>
                     <a class="nav-link px-2 py-1" href="{{ url_for('logout') }}">

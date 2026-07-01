@@ -1,5 +1,6 @@
 
 
+
 {% extends 'base.html' %}
 
 {% block title %}Students{% endblock %}
@@ -70,66 +71,61 @@ tr:nth-child(even){
        style="width:800px; height:30px; font-size:15px; text-align:left; margin:auto; display:block;">
 </div>
 
-
-
-
 <table>
-    <tr>
-        <th>Roll No</th>
-        <th>Name</th>
-        <th>Subject</th>
-        <th>Marks</th>
-        <th>Grade</th>
-        <th>Action</th>
-    </tr>
+    <thead>
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Marks</th>
+            <th>Grade</th>
+            <th>Action</th>
+        </tr>
+    </thead>
 
+    <tbody id="tableBody">
     {% for student in students %}
-<tr>
-    <td>{{ student['Rollno'] }}</td>
-    <td>{{ student['name'] }}</td>
-    <td>{{ student['subject'] }}</td>
-    <td>{{ student['Marks'] }}</td>
-    <td>{{ student['Grade'] }}</td>
-</tr>
-    
-    
-           {% if session.role == 'admin'%}
-            <a href="{{ url_for('edit_student', id=student.id) }}" class="edit-btn">
+    <tr data-name="{{ student['Name']|lower }}">
+        <td>{{ student['Rollno'] }}</td>
+        <td>{{ student['Name'] }}</td>
+        <td>{{ student['Subject'] }}</td>
+        <td>{{ student['Marks'] }}</td>
+        <td>{{ student['Grade'] }}</td>
+        <td>
+            {% if session.role == 'admin' %}
+            <a href="{{ url_for('edit_student', Rollno=student['Rollno']) }}" class="edit-btn">
                 Edit
             </a>
             {% endif %}
-            </td>
-             
-             <td>
-            <a href="{{ url_for('delete_student',Rollno=student.Rollno) }}" class="delete-btn">
+
+            <a href="{{ url_for('delete_student', Rollno=student['Rollno']) }}" class="delete-btn">
                 Delete
             </a>
-            
-            
         </td>
     </tr>
     {% endfor %}
+    </tbody>
+</table>
+
+
 
 <script>
-const searchInput = document.getElementById('searchInput');
-const allRows = document.querySelectorAll('#tableBody tr');
-const resultInfo = document.getElementById('resultInfo');
+const searchInput = document.getElementById("searchInput");
+const rows = document.querySelectorAll("#tableBody tr");
 
-searchInput.addEventListener('keyup', function() {
-    const query = this.value.toLowerCase();
-    let matchCount = 0;
-    allRows.forEach(function(row) {
-        const name = row.dataset.name || '';
+searchInput.addEventListener("keyup", function () {
+    const value = this.value.toLowerCase();
 
-        if(name.includes(query)){
-            row.style.display = '';
-            matchCount++;
+    rows.forEach(function(row) {
+        const text = row.innerText.toLowerCase();
+
+        if (text.includes(value)) {
+            row.style.display = "";
         } else {
-            row.style.display = 'none';
+            row.style.display = "none";
         }
     });
 });
-
 </script>
     
 

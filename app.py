@@ -76,9 +76,9 @@ def filter_students():
 @app.route('/add_student', methods=['GET', 'POST'])
 def add_student():
 
-    if 'username' not in session:
-      flash("please login first",Warning)
-      return redirect(url_for('login'))
+    #if 'username' not in session:
+      #flash("please login first",Warning)
+      #return redirect(url_for('login'))
 
     if request.method == 'POST':
         Rollno = request.form['Rollno']
@@ -234,6 +234,23 @@ def logout():
     session.pop('role',None)
     return redirect(url_for('login'))
 
+@app.route('/subjects')
+def subjects():
+       
+       conn = sqlite3.connect('table.db')
+       conn.row_factory = sqlite3.Row
+       cur = conn.cursor()
+
+       conn=get_db()
+       rows = conn.execute('''SELECT subjects.name AS subject_name ,COUNT(student.id) AS student_count
+        from subjects 
+      LEFT JOIN  students ON students.subject=subjects.name
+      GROUP BY subjects.name
+    ORDER BY subjects.name ''').fetchall()
+       conn.close()
+       return render_template('subjects.html',rows=rows)
+
 
 if __name__ == '__main__':
+    init_db()  # Initialize the database
     app.run(debug=True)

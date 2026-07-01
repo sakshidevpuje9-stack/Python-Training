@@ -23,7 +23,7 @@ def init_db():
     
     #Table 2 - students(stores subject_id, NOT the subject name)
     conn.execute('''
-                 CREATE TABLE IF NOT EXISTS students (
+                 CREATE TABLE IF NOT EXISTS student (
                      id INTEGER PRIMARY KEY AUTOINCREMENT,
                      name TEXT NOT NULL,
                      subject_id INTEGER,
@@ -42,7 +42,7 @@ def home():
     conn = get_db()
     
     # - Without JOIN - we only get subject_id, not the name
-    students_raw = conn.execute('SELECT * FROM students').fetchall()
+    students_raw = conn.execute('SELECT * FROM student').fetchall()
     # You can see the subject_id, but not the name of the subject
     # Not very useful for the user.
     
