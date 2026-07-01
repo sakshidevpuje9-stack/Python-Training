@@ -22,8 +22,8 @@ def get_db():
 
 # Home Page
 @app.route('/')
-def Home():
-    return render_template('Home.html')
+def home():
+    return render_template('home.html')
 
 
 # About Page
